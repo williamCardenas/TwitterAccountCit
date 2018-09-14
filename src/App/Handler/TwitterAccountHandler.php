@@ -27,11 +27,16 @@ class TwitterAccountHandler implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request) : ResponseInterface
     {
+        
+        $parserdBody = $request->getParsedBody();
+
+        $twitterPage = file_get_contents("https://twitter.com/".$parserdBody['twitterAccount']);
+
         // Do some work...
         // Render and return a response:
         return new HtmlResponse($this->renderer->render(
             'app::twitter-account',
-            [] // parameters to pass to template
+            $parserdBody
         ));
     }
 }

@@ -21,7 +21,7 @@ use Zend\Stratigility\Middleware\ErrorHandler;
 return function (Application $app, MiddlewareFactory $factory, ContainerInterface $container) : void {
     // The error handler should be the first (most outer) middleware to catch
     // all Exceptions.
-    //$app->pipe(ErrorHandler::class);
+    $app->pipe(ErrorHandler::class);
     $app->pipe(App\XClacksOverheadMiddleware::class);
     $app->pipe(ServerUrlMiddleware::class);
 
